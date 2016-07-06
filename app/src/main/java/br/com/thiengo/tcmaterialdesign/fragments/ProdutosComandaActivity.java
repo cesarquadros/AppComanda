@@ -189,11 +189,12 @@ public class ProdutosComandaActivity extends AppCompatActivity {
 
             ProdutosDAO itemComandaDAO = new ProdutosDAO();
 
-            Produtos [] arrayProd = itemComandaDAO.listarItens();
-            String[] values = new String[100];
+            ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens();
+            int tamanho = arrayProd.size();
+            String[] values = new String[tamanho];
 
-            for(int i = 0; i<1; i++){
-                values[i] = arrayProd[i].getDescricao();
+            for(int i = 0; i<tamanho; i++){
+                values[i] = arrayProd.get(i).getDescricao();
             }
 
             ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);

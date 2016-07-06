@@ -59,16 +59,11 @@ public class MainActivity extends ActionBarActivity {
                         if(abrirComanda){
                             Toast.makeText(getApplicationContext(),"Comanda aberta para "+ input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
                             // FRAGMENT
-                            ComandaFragment frag = (ComandaFragment) getSupportFragmentManager().findFragmentByTag("mainFrag");
-                                frag = new ComandaFragment();
-                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
-                                ft.commit();
+                            atualizarComanda();
                         }else{
                             Toast.makeText(getApplicationContext(),"Erro ao abrir a comanda", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                 });
                 mensagem.show();
                 return true;
@@ -108,5 +103,11 @@ public class MainActivity extends ActionBarActivity {
         return (comandaDao.comandasAbertas());
     }
 
-
+    public void atualizarComanda(){
+        ComandaFragment frag = (ComandaFragment) getSupportFragmentManager().findFragmentByTag("mainFrag");
+        frag = new ComandaFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
+        ft.commit();
+    }
 }

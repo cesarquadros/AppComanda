@@ -19,20 +19,18 @@ public class ProdutosDAO extends Conexao{
     private ResultSet rs = null;
     private String sql = null;
 
-    public Produtos[] listarItens(){
-        Produtos[] listaProdutos = new Produtos[100];
+    public ArrayList<Produtos> listarItens(){
+        ArrayList<Produtos> listaProdutos = new ArrayList<>();
         try {
             con = abreConexao();
             stmt = con.createStatement();
-            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = 1";
+            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = 4";
             rs = stmt.executeQuery(sql);
 
-
-            int contador=0;
             while(rs.next()){
                 Produtos produtos = new Produtos(rs.getInt(1), rs.getString(2),rs.getFloat(3));
-                listaProdutos[contador] = produtos;
-                contador++;
+                listaProdutos.add(produtos);
+
             }
 
         } catch (SQLException e) {

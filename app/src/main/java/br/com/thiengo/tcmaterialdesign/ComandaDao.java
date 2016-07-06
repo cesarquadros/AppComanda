@@ -53,18 +53,25 @@ public class ComandaDao extends Conexao {
         return listComandas;
     }
 
-    public void apagarComanda(String codComanda){
+    public boolean apagarComanda(String codComanda){
 
         try {
             con = abreConexao();
             stmt = con.createStatement();
+
+            sql = "DELETE FROM PAGAMENTOS WHERE COD_COMANDA = '"+codComanda+"'";
+            stmt.executeUpdate(sql);
+
+            sql = "DELETE FROM ITENS_COMANDA WHERE COD_COMANDA = '"+codComanda+"'";
+            stmt.executeUpdate(sql);
+
             sql = "DELETE FROM COMANDA WHERE COD_COMANDA = '"+codComanda+"'";
             stmt.executeUpdate(sql);
 
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-
-
     }
 }

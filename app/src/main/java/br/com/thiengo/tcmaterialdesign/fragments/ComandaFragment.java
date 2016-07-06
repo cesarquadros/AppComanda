@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -73,8 +74,16 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 ComandaDao comandaDao = new ComandaDao();
-                comandaDao.apagarComanda(codComanda);
-                Toast.makeText(getActivity(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
+                boolean apagar = comandaDao.apagarComanda(codComanda);
+
+                if(apagar){
+                    Toast.makeText(getActivity(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
+                    atualizarComanda();
+                }else{
+                    Toast.makeText(getActivity(), "Ocorreu um erro, dirija-se até o caixa", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -137,5 +146,13 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
         }
+    }
+
+    public void atualizarComanda(){
+        ComandaFragment frag = (ComandaFragment) getFragmentManager().findFragmentByTag("mainFrag");
+        frag = new ComandaFragment();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
+        ft.commit();
     }
 }
