@@ -30,7 +30,6 @@ public class ProdutosDAO extends Conexao{
             while(rs.next()){
                 Produtos produtos = new Produtos(rs.getInt(1), rs.getString(2),rs.getFloat(3));
                 listaProdutos.add(produtos);
-
             }
 
         } catch (SQLException e) {

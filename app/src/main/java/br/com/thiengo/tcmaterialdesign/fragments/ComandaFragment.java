@@ -29,7 +29,7 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
 
     private RecyclerView mRecyclerView;
     private List<Comanda> mList;
-    public String codComanda;
+    public static String codComanda;
     public static String nomeComanda;
 
 
@@ -60,8 +60,8 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
     @Override
     public void onClickListener(View view, int position) {
         //Toast.makeText(getActivity(), mList.get(position).getNome() + " " + mList.get(position).getCodComanda(), Toast.LENGTH_SHORT).show();
-
         nomeComanda = mList.get(position).getNome();
+        codComanda = mList.get(position).getCodComanda();
         //mList.get(position).getNome();
         Intent intent = new Intent(getActivity(), ProdutosComandaActivity.class);
         startActivity(intent);
@@ -72,22 +72,18 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         Toast.makeText(getActivity(), "onLongPressClickListener(): " + position, Toast.LENGTH_SHORT).show();
         codComanda = mList.get(position).getCodComanda();
         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-
         adb.setTitle("Excluír a comanda: " + codComanda+" ?");
         adb.setIcon(android.R.drawable.ic_dialog_alert);
         adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 ComandaDao comandaDao = new ComandaDao();
                 boolean apagar = comandaDao.apagarComanda(codComanda);
-
                 if(apagar){
                     Toast.makeText(getActivity(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
                     atualizarComanda();
                 }else{
                     Toast.makeText(getActivity(), "Ocorreu um erro, dirija-se até o caixa", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -96,7 +92,6 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
             }
         });
         adb.show();
-
     }
 
 

@@ -55,7 +55,6 @@ public class MainActivity extends ActionBarActivity {
                         comanda.setStatus("ABERTO");
                         comanda.setData(curDate);
                         boolean abrirComanda = comandaDao.abrirComanda(comanda);
-
                         if(abrirComanda){
                             Toast.makeText(getApplicationContext(),"Comanda aberta para "+ input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
                             // FRAGMENT

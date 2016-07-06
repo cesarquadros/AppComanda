@@ -1,5 +1,7 @@
 package br.com.thiengo.tcmaterialdesign.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
@@ -13,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,13 +23,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.util.ArrayList;
+
+import br.com.thiengo.tcmaterialdesign.MainActivity;
 import br.com.thiengo.tcmaterialdesign.ProdutosDAO;
 import br.com.thiengo.tcmaterialdesign.R;
 import br.com.thiengo.tcmaterialdesign.adapters.ProdutoAdapter;
@@ -57,6 +65,10 @@ public class ProdutosComandaActivity extends AppCompatActivity {
     private GoogleApiClient client;
     ListView listProdutos;
     private static Comanda comanda;
+    private static ArrayList<Produtos> arrayProd;
+    private static boolean controle = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,75 +199,61 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText("Nome: "+ComandaFragment.nomeComanda);
-            int aba = getArguments().getInt(ARG_SECTION_NUMBER);
-            ProdutosDAO itemComandaDAO = new ProdutosDAO();
+            if (controle == false) {
+                View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
+                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                textView.setText("Nome: " + ComandaFragment.nomeComanda);
+                final String codComanda = ComandaFragment.codComanda;
+                int aba = getArguments().getInt(ARG_SECTION_NUMBER);
+                ProdutosDAO itemComandaDAO = new ProdutosDAO();
 
-            if (aba == 1) {
-                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(2);
+                if (aba == 1) {
+                    arrayProd = itemComandaDAO.listarItens(2);
+
+                } else if (aba == 2) {
+                    arrayProd = itemComandaDAO.listarItens(1);
+
+                } else if (aba == 3) {
+                    arrayProd = itemComandaDAO.listarItens(4);
+
+                } else if (aba == 4) {
+                    arrayProd = itemComandaDAO.listarItens(3);
+                }
+
                 final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
                 listProdutos.setAdapter(produtoAdapter);
                 listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // ListView Clicked item index
                         int itemPosition = arrayProd.get(position).getCodProduto();
+                        // Show Alert
+                        Toast.makeText(getActivity(), "Codigo :" + itemPosition + "  Nome " + ComandaFragment.nomeComanda, Toast.LENGTH_LONG).show();
 
-                        // Show Alert
-                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
-                    }
-                });
-            }else if(aba == 2){
-                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(1);
-                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
-                listProdutos.setAdapter(produtoAdapter);
-                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                        // ListView Clicked item index
-                        int itemPosition = arrayProd.get(position).getCodProduto();
-                        // Show Alert
-                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  Nome: "+ComandaFragment.nomeComanda, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }else if(aba == 3){
-                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(4);
-                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
-                listProdutos.setAdapter(produtoAdapter);
-                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                        // ListView Clicked item index
-                        int itemPosition = arrayProd.get(position).getCodProduto();
+                   /* final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                    mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
+                    mensagem.setMessage("Digite a Quantidade:");
+                    // DECLARACAO DO EDITTEXT
+                    final EditText input = new EditText(getActivity());
+                    input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    mensagem.setView(input);
+                    mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
 
-                        // Show Alert
-                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    mensagem.show();*/
                     }
                 });
+
+                controle = true;
+                return rootView;
             }else{
-                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(3);
-                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
-                listProdutos.setAdapter(produtoAdapter);
-                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                        // ListView Clicked item index
-                        int itemPosition = arrayProd.get(position).getCodProduto();
-
-                        // Show Alert
-                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
-                    }
-                });
+                controle = false;
+                return null;
             }
-
-
-            return rootView;
         }
     }
 
@@ -274,10 +272,11 @@ public class ProdutosComandaActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
+
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 5;
+            // Show 4 total pages.
+            return 4;
         }
 
         @Override
