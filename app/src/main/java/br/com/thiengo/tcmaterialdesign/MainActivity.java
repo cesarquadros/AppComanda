@@ -64,7 +64,6 @@ public class MainActivity extends ActionBarActivity {
                                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                 ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
                                 ft.commit();
-
                         }else{
                             Toast.makeText(getApplicationContext(),"Erro ao abrir a comanda", Toast.LENGTH_SHORT).show();
                         }

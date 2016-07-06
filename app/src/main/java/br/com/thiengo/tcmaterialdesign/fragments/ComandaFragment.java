@@ -58,7 +58,7 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
     public void onClickListener(View view, int position) {
         Toast.makeText(getActivity(), mList.get(position).getNome() + " " + mList.get(position).getCodComanda(), Toast.LENGTH_SHORT).show();
         mList.get(position).getNome();
-        Intent intent = new Intent(getActivity(), ItensComanda.class);
+        Intent intent = new Intent(getActivity(), ProdutosComandaActivity.class);
         startActivity(intent);
     }
 

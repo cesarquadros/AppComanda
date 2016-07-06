@@ -34,7 +34,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".fragments.ItensComanda"
+            android:name=".fragments.ProdutosComandaActivity"
             android:label="@string/title_activity_itens_comanda"
             android:theme="@style/Theme.MyTheme"></activity>
     </application>
