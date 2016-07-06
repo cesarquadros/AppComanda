@@ -12,7 +12,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="0dp"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,5 +23,6 @@
         android:id="@+id/txtPreco"
         android:layout_below="@+id/txtDescricao"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="15dp" />
 </RelativeLayout>

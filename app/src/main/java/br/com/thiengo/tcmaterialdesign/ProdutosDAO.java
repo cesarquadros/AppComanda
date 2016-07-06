@@ -19,12 +19,12 @@ public class ProdutosDAO extends Conexao{
     private ResultSet rs = null;
     private String sql = null;
 
-    public ArrayList<Produtos> listarItens(){
+    public ArrayList<Produtos> listarItens(int codCategoria){
         ArrayList<Produtos> listaProdutos = new ArrayList<>();
         try {
             con = abreConexao();
             stmt = con.createStatement();
-            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = 4";
+            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = '"+codCategoria+"'";
             rs = stmt.executeQuery(sql);
 
             while(rs.next()){

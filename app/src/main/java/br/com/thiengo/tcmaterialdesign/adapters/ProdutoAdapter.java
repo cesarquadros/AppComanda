@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import br.com.thiengo.tcmaterialdesign.R;
@@ -29,12 +30,13 @@ public class ProdutoAdapter extends ArrayAdapter<Produtos> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        DecimalFormat df = new DecimalFormat("0.00");
         Produtos itemPosicao = this.listaProdutos.get(position);
         convertView = LayoutInflater.from(this.context).inflate(R.layout.produtos, null);
         TextView txtDescricao = (TextView) convertView.findViewById(R.id.txtDescricao);
         txtDescricao.setText(itemPosicao.getDescricao());
         TextView txtPreco = (TextView) convertView.findViewById(R.id.txtPreco);
-        txtPreco.setText(String.valueOf(itemPosicao.getPreco()));
+        txtPreco.setText(String.valueOf("R$"+df.format(itemPosicao.getPreco())));
 
         return convertView;
     }

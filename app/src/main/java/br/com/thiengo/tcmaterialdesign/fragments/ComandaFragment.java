@@ -29,7 +29,9 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
 
     private RecyclerView mRecyclerView;
     private List<Comanda> mList;
-    static String codComanda;
+    public String codComanda;
+    public static String nomeComanda;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -57,8 +59,10 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
 
     @Override
     public void onClickListener(View view, int position) {
-        Toast.makeText(getActivity(), mList.get(position).getNome() + " " + mList.get(position).getCodComanda(), Toast.LENGTH_SHORT).show();
-        mList.get(position).getNome();
+        //Toast.makeText(getActivity(), mList.get(position).getNome() + " " + mList.get(position).getCodComanda(), Toast.LENGTH_SHORT).show();
+
+        nomeComanda = mList.get(position).getNome();
+        //mList.get(position).getNome();
         Intent intent = new Intent(getActivity(), ProdutosComandaActivity.class);
         startActivity(intent);
     }

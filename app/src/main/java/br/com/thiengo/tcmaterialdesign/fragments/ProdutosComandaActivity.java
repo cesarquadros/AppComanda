@@ -1,5 +1,6 @@
 package br.com.thiengo.tcmaterialdesign.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -22,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import br.com.thiengo.tcmaterialdesign.ProdutosDAO;
 import br.com.thiengo.tcmaterialdesign.R;
 import br.com.thiengo.tcmaterialdesign.adapters.ProdutoAdapter;
+import br.com.thiengo.tcmaterialdesign.domain.Comanda;
 import br.com.thiengo.tcmaterialdesign.domain.Produtos;
 
 public class ProdutosComandaActivity extends AppCompatActivity {
@@ -54,13 +55,16 @@ public class ProdutosComandaActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    ListView listProdutos;
+    private static Comanda comanda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produtos_comanda);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        listProdutos = (ListView) findViewById(R.id.listProdutos);
 
 
        /* ArrayList<Produtos> listaProdutos = intemComandaDAO.listarItens();
@@ -70,10 +74,17 @@ public class ProdutosComandaActivity extends AppCompatActivity {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new
+
+                SectionsPagerAdapter(getSupportFragmentManager()
+
+        );
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager)
+
+                findViewById(R.id.container);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -108,49 +119,49 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   /* @Override
-    public void onStart() {
-        super.onStart();
+    /* @Override
+     public void onStart() {
+         super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ItensComanda Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://br.com.thiengo.tcmaterialdesign.fragments/http/host/path")
-        );
-//        AppIndex.AppIndexApi.start(client, viewAction);
-    }
+         // ATTENTION: This was auto-generated to implement the App Indexing API.
+         // See https://g.co/AppIndexing/AndroidStudio for more information.
+         client.connect();
+         Action viewAction = Action.newAction(
+                 Action.TYPE_VIEW, // TODO: choose an action type.
+                 "ItensComanda Page", // TODO: Define a title for the content shown.
+                 // TODO: If you have web page content that matches this app activity's content,
+                 // make sure this auto-generated web page URL is correct.
+                 // Otherwise, set the URL to null.
+                 Uri.parse("http://host/path"),
+                 // TODO: Make sure this auto-generated app URL is correct.
+                 Uri.parse("android-app://br.com.thiengo.tcmaterialdesign.fragments/http/host/path")
+         );
+    //        AppIndex.AppIndexApi.start(client, viewAction);
+     }
 
-    /*@Override
-    public void onStop() {
-        super.onStop();
+     /*@Override
+     public void onStop() {
+         super.onStop();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ItensComanda Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://br.com.thiengo.tcmaterialdesign.fragments/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
+         // ATTENTION: This was auto-generated to implement the App Indexing API.
+         // See https://g.co/AppIndexing/AndroidStudio for more information.
+         Action viewAction = Action.newAction(
+                 Action.TYPE_VIEW, // TODO: choose an action type.
+                 "ItensComanda Page", // TODO: Define a title for the content shown.
+                 // TODO: If you have web page content that matches this app activity's content,
+                 // make sure this auto-generated web page URL is correct.
+                 // Otherwise, set the URL to null.
+                 Uri.parse("http://host/path"),
+                 // TODO: Make sure this auto-generated app URL is correct.
+                 Uri.parse("android-app://br.com.thiengo.tcmaterialdesign.fragments/http/host/path")
+         );
+         AppIndex.AppIndexApi.end(client, viewAction);
+         client.disconnect();
+     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
+     /**
+      * A placeholder fragment containing a simple view.
+      */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -178,31 +189,71 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-
-
-           /* ProdutosDAO itemComandaDAO = new ProdutosDAO();
-            ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-            Produtos [] arrayProd = itemComandaDAO.listarItens();
-            ArrayAdapter<Produtos> adapter = new ArrayAdapter<Produtos>(getActivity(),android.R.layout.simple_list_item_2, android.R.id.text2, arrayProd);
-            listProdutos.setAdapter(adapter);*/
-
+            textView.setText("Nome: "+ComandaFragment.nomeComanda);
+            int aba = getArguments().getInt(ARG_SECTION_NUMBER);
             ProdutosDAO itemComandaDAO = new ProdutosDAO();
 
-            ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens();
-            int tamanho = arrayProd.size();
-            String[] values = new String[tamanho];
+            if (aba == 1) {
+                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(2);
+                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayProd.get(position).getCodProduto();
 
-            for(int i = 0; i<tamanho; i++){
-                values[i] = arrayProd.get(i).getDescricao();
+                        // Show Alert
+                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
+                    }
+                });
+            }else if(aba == 2){
+                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(1);
+                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayProd.get(position).getCodProduto();
+                        // Show Alert
+                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  Nome: "+ComandaFragment.nomeComanda, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }else if(aba == 3){
+                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(4);
+                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayProd.get(position).getCodProduto();
+
+                        // Show Alert
+                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
+                    }
+                });
+            }else{
+                final ArrayList<Produtos> arrayProd = itemComandaDAO.listarItens(3);
+                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayProd.get(position).getCodProduto();
+
+                        // Show Alert
+                        Toast.makeText(getActivity(), "Position :"+itemPosition+"  ListItem " , Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
-            ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-            listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, values);
-            listProdutos.setAdapter(adapter);
 
             return rootView;
         }
@@ -213,7 +264,6 @@ public class ProdutosComandaActivity extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -224,7 +274,6 @@ public class ProdutosComandaActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
-
         @Override
         public int getCount() {
             // Show 3 total pages.
@@ -235,17 +284,16 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "CERVEJA";
+                    return "Cerveja";
                 case 1:
-                    return "DESTILADOS";
+                    return "Bebidas";
                 case 2:
-                    return "BEBIDAS";
+                    return "Caldos";
                 case 3:
-                    return "CALDOS";
-                case 4:
-                    return "OUTROS";
+                    return "Outros";
             }
             return null;
         }
     }
+
 }
