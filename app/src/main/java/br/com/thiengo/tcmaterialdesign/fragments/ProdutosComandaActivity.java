@@ -66,7 +66,8 @@ public class ProdutosComandaActivity extends AppCompatActivity {
     ListView listProdutos;
     private static Comanda comanda;
     private static ArrayList<Produtos> arrayProd;
-    private static boolean controle = false;
+    private static boolean controle = true;
+    private static int contador = 0;
 
 
     @Override
@@ -131,7 +132,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /* @Override
+    /*@Override
      public void onStart() {
          super.onStart();
 
@@ -151,7 +152,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
     //        AppIndex.AppIndexApi.start(client, viewAction);
      }
 
-     /*@Override
+     @Override
      public void onStop() {
          super.onStop();
 
@@ -169,7 +170,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
          );
          AppIndex.AppIndexApi.end(client, viewAction);
          client.disconnect();
-     }
+     }*/
 
      /**
       * A placeholder fragment containing a simple view.
@@ -199,25 +200,31 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            if (controle == false) {
+
                 View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
                 TextView textView = (TextView) rootView.findViewById(R.id.section_label);
                 textView.setText("Nome: " + ComandaFragment.nomeComanda);
                 final String codComanda = ComandaFragment.codComanda;
-                int aba = getArguments().getInt(ARG_SECTION_NUMBER);
+                int aba = 0;
                 ProdutosDAO itemComandaDAO = new ProdutosDAO();
-
+           //if (contador == 1) {
+               aba = getArguments().getInt(ARG_SECTION_NUMBER);
+               contador = 0;
+         //  }else{
+         //      aba = getArguments().getInt(ARG_SECTION_NUMBER);
+               contador++;
+        //   }
                 if (aba == 1) {
-                    arrayProd = itemComandaDAO.listarItens(2);
-
-                } else if (aba == 2) {
                     arrayProd = itemComandaDAO.listarItens(1);
 
+                } else if (aba == 2) {
+                    arrayProd = itemComandaDAO.listarItens(2);
+
                 } else if (aba == 3) {
-                    arrayProd = itemComandaDAO.listarItens(4);
+                    arrayProd = itemComandaDAO.listarItens(3);
 
                 } else if (aba == 4) {
-                    arrayProd = itemComandaDAO.listarItens(3);
+                    arrayProd = itemComandaDAO.listarItens(4);
                 }
 
                 final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
@@ -248,12 +255,8 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     }
                 });
 
-                controle = true;
                 return rootView;
-            }else{
-                controle = false;
-                return null;
-            }
+
         }
     }
 
@@ -270,7 +273,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position+1);
         }
 
         @Override
