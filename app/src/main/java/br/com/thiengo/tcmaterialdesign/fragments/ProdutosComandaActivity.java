@@ -39,6 +39,7 @@ import br.com.thiengo.tcmaterialdesign.ProdutosDAO;
 import br.com.thiengo.tcmaterialdesign.R;
 import br.com.thiengo.tcmaterialdesign.adapters.ProdutoAdapter;
 import br.com.thiengo.tcmaterialdesign.domain.Comanda;
+import br.com.thiengo.tcmaterialdesign.domain.Item;
 import br.com.thiengo.tcmaterialdesign.domain.Produtos;
 
 public class ProdutosComandaActivity extends AppCompatActivity {
@@ -65,6 +66,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
     private GoogleApiClient client;
     ListView listProdutos;
     private static Comanda comanda;
+    private static Item item;
     private static ArrayList<Produtos> arrayCerv;
     private static ArrayList<Produtos> arrayBeb;
     private static ArrayList<Produtos> arrayCaldos;
@@ -205,30 +207,28 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
-
             View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText("Nome: " + ComandaFragment.nomeComanda);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //textView.setText("Nome: " + ComandaFragment.nomeComanda);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
             final String codComanda = ComandaFragment.codComanda;
             int aba = 0;
 
             aba = getArguments().getInt(ARG_SECTION_NUMBER);
-            ProdutosDAO itemComandaDAO = new ProdutosDAO();
+            final ProdutosDAO itemComandaDAO = new ProdutosDAO();
+
             if (textView.getText().equals("1")) {
                 arrayCerv = itemComandaDAO.listarItens(1);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayCerv);
                 listProdutos.setAdapter(produtoAdapter);
                 listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                         // ListView Clicked item index
-                        int itemPosition = arrayCerv.get(position).getCodProduto();
+                        final int codProduto = arrayCerv.get(position).getCodProduto();
+                        final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
                         // Show Alert
-                        Toast.makeText(getActivity(), "Codigo :" + itemPosition + "  Nome " + ComandaFragment.nomeComanda, Toast.LENGTH_LONG).show();
-
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayCerv.get(position).getDescricao() + ":");
@@ -239,7 +239,14 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-
+                                int qtdItens = Integer.parseInt(input.getText().toString());
+                                item = new Item(codProduto, codComanda);
+                                boolean addIten = itemComandaDAO.addIten(item, qtdItens);
+                                if (addIten) {
+                                    Toast.makeText(getActivity(), "Item adicionado", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), "Erro ao adicionar item", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                         mensagem.show();
@@ -254,7 +261,8 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // ListView Clicked item index
-                        int itemPosition = arrayBeb.get(position).getCodProduto();
+                        final int codProduto = arrayBeb.get(position).getCodProduto();
+                        final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
@@ -266,6 +274,14 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                                int qtdItens = Integer.parseInt(input.getText().toString());
+                                item = new Item(codProduto, codComanda);
+                                boolean addIten = itemComandaDAO.addIten(item, qtdItens);
+                                if (addIten) {
+                                    Toast.makeText(getActivity(), "Item adicionado", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), "Erro ao adicionar item", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                         mensagem.show();
@@ -280,7 +296,9 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // ListView Clicked item index
-                        int itemPosition = arrayCaldos.get(position).getCodProduto();
+                        final int codProduto = arrayCaldos.get(position).getCodProduto();
+                        final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
+
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayCaldos.get(position).getDescricao() + ":");
@@ -290,13 +308,19 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         mensagem.setView(input);
                         mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-
+                                int qtdItens = Integer.parseInt(input.getText().toString());
+                                item = new Item(codProduto, codComanda);
+                                boolean addIten = itemComandaDAO.addIten(item, qtdItens);
+                                if (addIten) {
+                                    Toast.makeText(getActivity(), "Item adicionado", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), "Erro ao adicionar item", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                         mensagem.show();
                     }
                 });
-
             } else if (aba == 4) {
                 arrayBebOut = itemComandaDAO.listarItens(4);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayBebOut);
@@ -305,7 +329,8 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // ListView Clicked item index
-                        int itemPosition = arrayBebOut.get(position).getCodProduto();
+                        final int codProduto = arrayBebOut.get(position).getCodProduto();
+                        final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
@@ -317,7 +342,14 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-
+                                int qtdItens = Integer.parseInt(input.getText().toString());
+                                item = new Item(codProduto, codComanda);
+                                boolean addIten = itemComandaDAO.addIten(item, qtdItens);
+                                if (addIten) {
+                                    Toast.makeText(getActivity(), "Item adicionado", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), "Erro ao adicionar item", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                         mensagem.show();
