@@ -209,16 +209,17 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText("Nome: " + ComandaFragment.nomeComanda);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText("Nome: " + ComandaFragment.nomeComanda);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
             final String codComanda = ComandaFragment.codComanda;
-            int aba = 0;
+            int aba = getArguments().getInt(ARG_SECTION_NUMBER);
+            String text = (getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
-            aba = getArguments().getInt(ARG_SECTION_NUMBER);
+
             final ProdutosDAO itemComandaDAO = new ProdutosDAO();
 
-            if (textView.getText().equals("1")) {
+            if (text.equals("1")) {
                 arrayCerv = itemComandaDAO.listarItens(1);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayCerv);
                 listProdutos.setAdapter(produtoAdapter);
@@ -253,7 +254,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     }
                 });
 
-            } else if (textView.getText().equals("2")) {
+            } else if (text.equals("2")) {
                 arrayBeb = itemComandaDAO.listarItens(2);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayBeb);
                 listProdutos.setAdapter(produtoAdapter);
@@ -288,7 +289,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                     }
                 });
 
-            } else if (aba == 3) {
+            } else if (text.equals("3")) {
                 arrayCaldos = itemComandaDAO.listarItens(3);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayCaldos);
                 listProdutos.setAdapter(produtoAdapter);
@@ -321,7 +322,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         mensagem.show();
                     }
                 });
-            } else if (aba == 4) {
+            } else if (text.equals("4")) {
                 arrayBebOut = itemComandaDAO.listarItens(4);
                 ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayBebOut);
                 listProdutos.setAdapter(produtoAdapter);
