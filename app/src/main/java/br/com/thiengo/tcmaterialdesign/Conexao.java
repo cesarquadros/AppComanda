@@ -22,7 +22,7 @@ public class Conexao {
         try {
             // SET CONNECTIONSTRING
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            String iip = "192.168.2.108";
+            String iip = "192.168.0.10";
             String username = "sa";
             String password = "admin123";
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

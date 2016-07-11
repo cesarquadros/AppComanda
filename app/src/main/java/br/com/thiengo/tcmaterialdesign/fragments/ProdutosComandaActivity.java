@@ -65,7 +65,12 @@ public class ProdutosComandaActivity extends AppCompatActivity {
     private GoogleApiClient client;
     ListView listProdutos;
     private static Comanda comanda;
-    private static ArrayList<Produtos> arrayProd;
+    private static ArrayList<Produtos> arrayCerv;
+    private static ArrayList<Produtos> arrayBeb;
+    private static ArrayList<Produtos> arrayCaldos;
+    private static ArrayList<Produtos> arrayBebOut;
+
+
     private static boolean controle = true;
     private static int contador = 0;
 
@@ -172,9 +177,9 @@ public class ProdutosComandaActivity extends AppCompatActivity {
          client.disconnect();
      }*/
 
-     /**
-      * A placeholder fragment containing a simple view.
-      */
+    /**
+     * A placeholder fragment containing a simple view.
+     */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -201,63 +206,128 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-                View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText("Nome: " + ComandaFragment.nomeComanda);
-                final String codComanda = ComandaFragment.codComanda;
-                int aba = 0;
-                ProdutosDAO itemComandaDAO = new ProdutosDAO();
-           //if (contador == 1) {
-               aba = getArguments().getInt(ARG_SECTION_NUMBER);
-               contador = 0;
-         //  }else{
-         //      aba = getArguments().getInt(ARG_SECTION_NUMBER);
-               contador++;
-        //   }
-                if (aba == 1) {
-                    arrayProd = itemComandaDAO.listarItens(1);
 
-                } else if (aba == 2) {
-                    arrayProd = itemComandaDAO.listarItens(2);
+            View rootView = inflater.inflate(R.layout.fragment_produtos_comanda, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText("Nome: " + ComandaFragment.nomeComanda);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
+            final String codComanda = ComandaFragment.codComanda;
+            int aba = 0;
 
-                } else if (aba == 3) {
-                    arrayProd = itemComandaDAO.listarItens(3);
-
-                } else if (aba == 4) {
-                    arrayProd = itemComandaDAO.listarItens(4);
-                }
-
-                final ListView listProdutos = (ListView) rootView.findViewById(R.id.listProdutos);
-                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayProd);
+            aba = getArguments().getInt(ARG_SECTION_NUMBER);
+            ProdutosDAO itemComandaDAO = new ProdutosDAO();
+            if (textView.getText().equals("1")) {
+                arrayCerv = itemComandaDAO.listarItens(1);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayCerv);
                 listProdutos.setAdapter(produtoAdapter);
                 listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // ListView Clicked item index
-                        int itemPosition = arrayProd.get(position).getCodProduto();
+                        int itemPosition = arrayCerv.get(position).getCodProduto();
                         // Show Alert
                         Toast.makeText(getActivity(), "Codigo :" + itemPosition + "  Nome " + ComandaFragment.nomeComanda, Toast.LENGTH_LONG).show();
 
-                   /* final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
-                    mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
-                    mensagem.setMessage("Digite a Quantidade:");
-                    // DECLARACAO DO EDITTEXT
-                    final EditText input = new EditText(getActivity());
-                    input.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    mensagem.setView(input);
-                    mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                        final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
+                        mensagem.setMessage("Digite a Quantidade de " + arrayCerv.get(position).getDescricao() + ":");
+                        // DECLARACAO DO EDITTEXT
+                        final EditText input = new EditText(getActivity());
+                        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                        mensagem.setView(input);
+                        mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
-                    mensagem.show();*/
+                            }
+                        });
+                        mensagem.show();
                     }
                 });
 
-                return rootView;
+            } else if (textView.getText().equals("2")) {
+                arrayBeb = itemComandaDAO.listarItens(2);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayBeb);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayBeb.get(position).getCodProduto();
 
+                        final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
+                        mensagem.setMessage("Digite a Quantidade de " + arrayBeb.get(position).getDescricao() + ":");
+                        // DECLARACAO DO EDITTEXT
+                        final EditText input = new EditText(getActivity());
+                        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                        mensagem.setView(input);
+                        mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        mensagem.show();
+                    }
+                });
+
+            } else if (aba == 3) {
+                arrayCaldos = itemComandaDAO.listarItens(3);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayCaldos);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayCaldos.get(position).getCodProduto();
+                        final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
+                        mensagem.setMessage("Digite a Quantidade de " + arrayCaldos.get(position).getDescricao() + ":");
+                        // DECLARACAO DO EDITTEXT
+                        final EditText input = new EditText(getActivity());
+                        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                        mensagem.setView(input);
+                        mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        mensagem.show();
+                    }
+                });
+
+            } else if (aba == 4) {
+                arrayBebOut = itemComandaDAO.listarItens(4);
+                ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), arrayBebOut);
+                listProdutos.setAdapter(produtoAdapter);
+                listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // ListView Clicked item index
+                        int itemPosition = arrayBebOut.get(position).getCodProduto();
+
+                        final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
+                        mensagem.setMessage("Digite a Quantidade de " + arrayBebOut.get(position).getDescricao() + ":");
+                        // DECLARACAO DO EDITTEXT
+                        final EditText input = new EditText(getActivity());
+                        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                        mensagem.setView(input);
+                        mensagem.setNeutralButton("Incluir item a comanda", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                        mensagem.show();
+                    }
+                });
+            }
+            return rootView;
         }
+
+
     }
 
     /**
@@ -273,7 +343,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position+1);
+            return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
