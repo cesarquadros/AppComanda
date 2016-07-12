@@ -50,7 +50,7 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         mRecyclerView.setLayoutManager(llm);
 
 
-        mList = ((MainActivity) getActivity()).getSetCarList(100);
+        mList = ((MainActivity) getActivity()).getSetCarList();
         ComandaAdapter adapter = new ComandaAdapter(getActivity(), mList);
         //adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);

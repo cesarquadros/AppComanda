@@ -48,6 +48,7 @@ public class ComandaDao extends Conexao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return listComandas;
         }
 
         return listComandas;

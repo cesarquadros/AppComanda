@@ -18,16 +18,33 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
-        android:layout_below="@+id/tb_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/hello_world"
-        android:textColor="@color/black" />
+        android:layout_marginTop="24dp"
+        android:text="Digite o IP"
+        android:textColor="@color/black"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/tb_main"
+        android:layout_alignLeft="@+id/txtIp"
+        android:layout_alignStart="@+id/txtIp" />
 
     <include
         android:id="@+id/inc_tb_bottom"
         layout="@layout/toolbar_bottom"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/tb_main"
+        android:layout_alignStart="@+id/tb_main"
+        android:layout_alignRight="@+id/tb_main"
+        android:layout_alignEnd="@+id/tb_main"
+        android:layout_marginRight="253dp"
+        android:layout_marginEnd="253dp"
+        android:inputType="number"
+        android:autoText="false" />
 
 </RelativeLayout>
 

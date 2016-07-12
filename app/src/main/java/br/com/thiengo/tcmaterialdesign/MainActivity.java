@@ -7,15 +7,20 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import br.com.thiengo.tcmaterialdesign.domain.Comanda;
 import br.com.thiengo.tcmaterialdesign.fragments.ComandaFragment;
+import br.com.thiengo.tcmaterialdesign.fragments.ProdutosComandaActivity;
 
 public class MainActivity extends ActionBarActivity {
     private static String TAG = "LOG";
@@ -23,6 +28,8 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar mToolbarBottom;
     public static String curDate;
     private ComandaDao comandaDao = new ComandaDao();
+    public static String ipConexao = "192.168.2.109";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,7 @@ public class MainActivity extends ActionBarActivity {
         mToolbar.setSubtitle("Comandas em aberto");
         mToolbar.setLogo(R.drawable.ic_launcher);
         setSupportActionBar(mToolbar);
+
 
         mToolbarBottom = (Toolbar) findViewById(R.id.inc_tb_bottom);
         mToolbarBottom.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -96,9 +104,40 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public List<Comanda> getSetCarList(int qtd) {
+    public List<Comanda> getSetCarList() {
         ComandaDao comandaDao = new ComandaDao();
+        Conexao conexao = new Conexao();
+        try {
+            if(conexao.abreConexao()==null){
+                Comanda comanda = new Comanda();
+                List<Comanda> list = new ArrayList<>();
 
+                final AlertDialog.Builder mensagem = new AlertDialog.Builder(MainActivity.this);
+                mensagem.setTitle("Bar do Bugão");
+                mensagem.setMessage("Erro ao conectar, digite o ip do servidor:");
+                final EditText input = new EditText(MainActivity.this);
+                input.addTextChangedListener(Mask.insert("###.###.###.###",input));
+                input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                mensagem.setView(input);
+                mensagem.setNeutralButton("Reconectar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                        ipConexao = input.getText().toString();
+                        ComandaFragment frag = (ComandaFragment) getSupportFragmentManager().findFragmentByTag("mainFrag");
+                            frag = new ComandaFragment();
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
+                            ft.commit();
+                    }
+                });
+                mensagem.show();
+                return list;
+            }else{
+                return (comandaDao.comandasAbertas());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return (comandaDao.comandasAbertas());
     }
 
