@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -25,20 +26,25 @@ import br.com.thiengo.tcmaterialdesign.adapters.ComandaAdapter;
 import br.com.thiengo.tcmaterialdesign.domain.Comanda;
 import br.com.thiengo.tcmaterialdesign.interfaces.RecyclerViewOnClickListenerHack;
 
-public class ComandaFragment extends Fragment implements RecyclerViewOnClickListenerHack {
+public class ComandaFragment extends Fragment implements RecyclerViewOnClickListenerHack,SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView mRecyclerView;
     private List<Comanda> mList;
     public static String codComanda;
     public static String nomeComanda;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_car, container, false);
 
+
+
+        View view = inflater.inflate(R.layout.fragment_car, container, false);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_list);
         mRecyclerView.setHasFixedSize(true);
 
@@ -55,6 +61,20 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         //adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void onRefresh(){
+        swipeRefreshLayout.setRefreshing(true);
+        Toast.makeText(getActivity(), "Comandas atualizadas", Toast.LENGTH_SHORT).show();
+        refreshList();
+    }
+   public void refreshList(){
+        //do processing to get new data and set your listview's adapter, maybe  reinitialise the loaders you may be using or so
+        //when your data has finished loading, cset the refresh state of the view to false
+       atualizarComanda();
+        swipeRefreshLayout.setRefreshing(false);
+
     }
 
     @Override
