@@ -25,7 +25,7 @@ public class ProdutosDAO extends Conexao{
         try {
             con = abreConexao();
             stmt = con.createStatement();
-            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = '"+codCategoria+"'";
+            sql = "SELECT COD_PRODUTO, DESCRICAO, PRECO FROM PRODUTOS WHERE COD_CATEGORIA = '"+codCategoria+"' ORDER BY DESCRICAO";
             rs = stmt.executeQuery(sql);
 
             while(rs.next()){
