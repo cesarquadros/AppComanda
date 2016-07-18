@@ -2,95 +2,95 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\cquadros\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\support-annotations-22.2.1-f67616d4607ad66c1af976fe692f8b7cac4b6aae.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\classes.jar"
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-43df1529b5056cd1d2ccaacd219e20e6bd4d9b01.jar" />
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-0d812f0d2d283a702e0fac881710221744aa3cae.jar" />
     </item>
     <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1821601ddbec5ff125653097812823388700af74">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-01c3c5c98236960e7d0fbc96840ce483502c4d7c.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-9c99180694b43e0eb4e5dab73176925997257a92.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-a645a6f85b1d542c6ba43cfc1b4514c8e3a8b247.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\library-2.4.0-cd8b28992856396de4751ec8c94aaf44cd43c6ba.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-d018ff1eacc398c3dfaa745b28cabe0f539f5da6.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.daimajia.easing\library\1.0.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-ef64022d481fa20bb952a8f5f95cc4193d21824b.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-091ab636e11f8087d61250132e677de18b04fddd.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.daimajia.androidanimations\library\1.1.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8cec50fc9cc847bad0d6ed7d93814f4b34744521">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-7296f43ea10d63b85de692ac250e86ef9c1d493c.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\libs\jtds-1.3.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1fc4d17efa80dc375767b0c1006584175212e9dc">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\jtds-1.3.1-20fc4ba9c49f8f202034ad352b2abb305fa6f534.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\libs\internal_impl-22.2.1.jar"
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\internal_impl-22.2.1-cee2ca4366c4e3abd8515833329611ce7168d812.jar" />
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\internal_impl-22.2.1-02e11b10b4685f38a13133c8431e01853e678d74.jar" />
     </item>
     <item
-        jar="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\classes.jar"
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-bf17fda88eed452b129d3736c2a83922fdd5fb92.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-c1a0746fb82213871b830af2dd8bba831829bd56.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.daimajia.easing\library\1.0.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-906d570505f9b3687b5ecd9b45d3f7719383439b.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-43afa2d32d8f1572fb1d6743eb25d3b19f4f391e.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\library-2.4.0-1b42b25c19bb5cb95d84de5dea37151ca93c473d.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\Users\cquadros\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-0245e4e956e2b9a4c7dff4dec402aaff9ef94b6d.jar" />
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-389d5622374fe4089c526dd39be0f3179e8a362b.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\support-annotations-22.2.1-fb6a8cf865128fc68218567cbb77a1f53179d984.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-f180fbbbc5812795dae9ab76c73c6dd46cd463d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\libs\jtds-1.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1fc4d17efa80dc375767b0c1006584175212e9dc">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\jtds-1.3.1-1018444c21ee7eedc9d056da1a6065448e7382d8.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.daimajia.androidanimations\library\1.1.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8cec50fc9cc847bad0d6ed7d93814f4b34744521">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-46c824be36f88e3caf41c47b0c4332ee24b109bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\ninOX\workspace\TCMaterialDesign\app\build\intermediates\pre-dexed\release\classes-1a50a6dc2df0557d91feabef0ff692ed512a7f15.jar" />
     </item>
 
 </items>
