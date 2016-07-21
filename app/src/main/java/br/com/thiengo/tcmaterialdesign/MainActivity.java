@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar mToolbarBottom;
     public static String curDate;
     private ComandaDao comandaDao = new ComandaDao();
-    public static String ipConexao = "";
+    public static String ipConexao = "192.168.0.10";
 
 
     @Override

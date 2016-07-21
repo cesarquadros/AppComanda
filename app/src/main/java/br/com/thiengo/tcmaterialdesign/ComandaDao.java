@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class ComandaDao extends Conexao {
     private Statement stmt = null;
     private ResultSet rs = null;
     private String sql = null;
+    private DecimalFormat df = new DecimalFormat("0.00");
 
 
     public boolean abrirComanda(Comanda comanda) {
@@ -74,5 +76,43 @@ public class ComandaDao extends Conexao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public String comprovante(int codComanda) throws SQLException{
+        String itens = "";
+        float valor = 0;
+        try {
+            con = abreConexao();
+            stmt = con.createStatement();
+
+            sql = "SELECT"+
+                    " P.DESCRICAO,P.PRECO, COUNT(*) AS CONT"+
+                    " FROM " +
+                    " ITENS_COMANDA IC, PRODUTOS P, CATEGORIAS CA"+
+                    " WHERE"+
+                    " P.COD_PRODUTO = IC.COD_PRODUTO"+
+                    " AND"+
+                    " P.COD_CATEGORIA = CA.COD_CATEGORIA"+
+                    " AND"+
+                    " IC.COD_COMANDA = '"+codComanda+"'"+
+                    " GROUP BY"+
+                    " P.DESCRICAO, P.PRECO";
+            rs = stmt.executeQuery(sql);
+
+
+            int i =0;
+            while(rs.next()){
+                itens += "\n"+ rs.getString(1) + "   x"+ rs.getInt(3);
+                valor += rs.getFloat(2);
+            }
+            itens += "\n \n VALOR TOTAL: "+df.format(valor);
+                return itens;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            con.close();
+        }
+        con.close();
+        return itens;
     }
 }

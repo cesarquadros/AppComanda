@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.com.thiengo.tcmaterialdesign.ComandaDao;
@@ -89,28 +90,32 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
 
     @Override
     public void onLongPressClickListener(View view, int position) {
-        Toast.makeText(getActivity(), "onLongPressClickListener(): " + position, Toast.LENGTH_SHORT).show();
+
+
+        //Toast.makeText(getActivity(), "onLongPressClickListener(): " + position, Toast.LENGTH_SHORT).show();
         codComanda = mList.get(position).getCodComanda();
         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-        adb.setTitle("Excluír a comanda: " + codComanda+" ?");
-        adb.setIcon(android.R.drawable.ic_dialog_alert);
+        adb.setTitle("Itens da comanda: " + codComanda);
+        //adb.setIcon(android.R.drawable.ic_dialog_alert);
+        ComandaDao comandaDao = new ComandaDao();
+        String itens = "";
+        try {
+            itens = comandaDao.comprovante(Integer.parseInt(codComanda));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        adb.setMessage(itens);
         adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                ComandaDao comandaDao = new ComandaDao();
-                boolean apagar = comandaDao.apagarComanda(codComanda);
-                if(apagar){
-                    Toast.makeText(getActivity(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
-                    atualizarComanda();
-                }else{
-                    Toast.makeText(getActivity(), "Ocorreu um erro, dirija-se até o caixa", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
-        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+       /* adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //finish();
             }
-        });
+        });*/
         adb.show();
     }
 
