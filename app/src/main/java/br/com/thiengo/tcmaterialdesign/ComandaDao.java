@@ -80,7 +80,7 @@ public class ComandaDao extends Conexao {
 
     public String comprovante(int codComanda) throws SQLException{
         String itens = "";
-        float valor = 0;
+        float valorTotal = 0;
         try {
             con = abreConexao();
             stmt = con.createStatement();
@@ -103,9 +103,10 @@ public class ComandaDao extends Conexao {
             int i =0;
             while(rs.next()){
                 itens += "\n"+ rs.getString(1) + "   x"+ rs.getInt(3);
-                valor += rs.getFloat(2);
+                float valor = rs.getFloat(2)*rs.getInt(3);
+                valorTotal += valor;
             }
-            itens += "\n \n VALOR TOTAL: "+df.format(valor);
+            itens += "\n \n VALOR TOTAL: "+df.format(valorTotal);
                 return itens;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
