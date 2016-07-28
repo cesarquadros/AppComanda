@@ -41,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
         mToolbar = (Toolbar) findViewById(R.id.tb_main);
         mToolbar.setTitle("Bar do Bugao");
         mToolbar.setSubtitle("Comandas em aberto");
-        mToolbar.setLogo(R.drawable.ic_launcher);
+        //mToolbar.setLogo(R.drawable.ic_launcher);
         setSupportActionBar(mToolbar);
 
 

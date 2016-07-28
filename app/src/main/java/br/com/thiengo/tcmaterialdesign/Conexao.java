@@ -24,9 +24,12 @@ public class Conexao {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             String iip = MainActivity.ipConexao;
             String username = "sa";
-            String password = "admin123";
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
+            String password = "Ces@r190788";
+            if (android.os.Build.VERSION.SDK_INT > 9)
+            {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+            }
             DbConn = DriverManager.getConnection("jdbc:jtds:sqlserver://"+iip+"/COMANDA;user=" + username + ";password=" + password);
             //Toast.makeText(Conexao.this, "Conectado", Toast.LENGTH_LONG).show();
             Log.w("Connection", "open");
