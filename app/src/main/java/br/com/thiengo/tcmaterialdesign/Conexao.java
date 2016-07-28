@@ -1,16 +1,23 @@
 package br.com.thiengo.tcmaterialdesign;
 
 import android.annotation.TargetApi;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 
 public class Conexao {
@@ -23,8 +30,8 @@ public class Conexao {
             // SET CONNECTIONSTRING
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             String iip = MainActivity.ipConexao;
-            String username = "sa";
-            String password = "Ces@r190788";
+            String username = MainActivity.usuarioBanco;
+            String password = MainActivity.senhaBanco;
             if (android.os.Build.VERSION.SDK_INT > 9)
             {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -48,4 +55,5 @@ public class Conexao {
             e.printStackTrace();
         }
     }
+
 }
