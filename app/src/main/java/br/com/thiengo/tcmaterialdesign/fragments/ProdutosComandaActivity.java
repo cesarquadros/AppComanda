@@ -83,7 +83,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_produtos_comanda);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.ic_logoapp_dois);
+        toolbar.setLogo(R.drawable.ic_logoapp_dois_peq);
         //toolbar.setTitle("Bar do Bugao");
         //toolbar.setSubtitle("Adicionar Itens");
 
@@ -340,7 +340,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
-                        mensagem.setIcon(R.drawable.ic_logoapp_dois);
+                        mensagem.setIcon(R.drawable.ic_logoapp_dois_peq);
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayBebOut.get(position).getDescricao() + ":");
                         // DECLARACAO DO EDITTEXT

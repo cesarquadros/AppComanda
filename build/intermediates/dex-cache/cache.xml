@@ -2,67 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-28c68e3ba1c6ea27d7f38218c455761cc3566541.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-136142d8b6ab8069b15d8dc9b8bf72d504c01a5a.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1821601ddbec5ff125653097812823388700af74">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-0788ca8cebb4da83297fc063c2886b1d15f03959.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.daimajia.easing\library\1.0.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-84cfed9aa9841e24edde98a55435008c90bba2d3.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\library-2.4.0-cd8b28992856396de4751ec8c94aaf44cd43c6ba.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-d5bf9d3ccdd50a2daba7cca2d2048da04b98c11d.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-9759e0e2865ccc7292edf0ed82059e6f9504ebfe.jar" />
-    </item>
-    <item
         jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
         <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-fa14ec74e48c7f30e6db0a851650bb3072f75eaf.jar" />
-    </item>
-    <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-1ad3f49ff361b08afbb6b5efd25bd1595b0f9ae2.jar" />
     </item>
     <item
         jar="C:\Users\cquadros\workspace\AppComanda\app\libs\jtds-1.3.0.jar"
@@ -79,11 +23,11 @@
         <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-b04e9a81c5ff6b905b3b4ec0c95a124b2dba4a77.jar" />
     </item>
     <item
-        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\classes.jar"
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-0be0c59ee9c932ca477e0a41b0bd66a2a88d6fe9.jar" />
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-1ad3f49ff361b08afbb6b5efd25bd1595b0f9ae2.jar" />
     </item>
     <item
         jar="C:\Users\cquadros\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
@@ -91,6 +35,62 @@
         revision="21.1.2"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-20e2f6630f8f4257511b6af582d7bcb66c9af16e.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-0be0c59ee9c932ca477e0a41b0bd66a2a88d6fe9.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\library-2.4.0-cd8b28992856396de4751ec8c94aaf44cd43c6ba.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-0788ca8cebb4da83297fc063c2886b1d15f03959.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.daimajia.easing\library\1.0.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-84cfed9aa9841e24edde98a55435008c90bba2d3.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-28c68e3ba1c6ea27d7f38218c455761cc3566541.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-9759e0e2865ccc7292edf0ed82059e6f9504ebfe.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-d5bf9d3ccdd50a2daba7cca2d2048da04b98c11d.jar" />
+    </item>
+    <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\classes-136142d8b6ab8069b15d8dc9b8bf72d504c01a5a.jar" />
     </item>
 
 </items>

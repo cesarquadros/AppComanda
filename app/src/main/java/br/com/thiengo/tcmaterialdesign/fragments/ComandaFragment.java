@@ -94,6 +94,8 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         codComanda = mList.get(position).getCodComanda();
         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
         adb.setTitle("Itens da comanda: " + codComanda);
+        adb.setIcon(R.drawable.ic_logoapp_dois);
+
         //adb.setIcon(android.R.drawable.ic_dialog_alert);
         ComandaDao comandaDao = new ComandaDao();
         String itens = "";

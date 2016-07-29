@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
         mToolbar = (Toolbar) findViewById(R.id.tb_main);
         mToolbar.setTitle("Bar do Bugao");
         mToolbar.setSubtitle("Comandas em aberto");
-        mToolbar.setLogo(R.drawable.ic_logoapp_dois);
+        mToolbar.setLogo(R.drawable.ic_logoapp_dois_peq);
         setSupportActionBar(mToolbar);
         //ipConexao = ipRede();
 
