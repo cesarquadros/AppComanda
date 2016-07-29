@@ -90,8 +90,6 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
 
     @Override
     public void onLongPressClickListener(View view, int position) {
-
-
         //Toast.makeText(getActivity(), "onLongPressClickListener(): " + position, Toast.LENGTH_SHORT).show();
         codComanda = mList.get(position).getCodComanda();
         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());

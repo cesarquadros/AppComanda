@@ -83,6 +83,9 @@ public class ProdutosComandaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_produtos_comanda);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setLogo(R.drawable.ic_logoapp_dois);
+        //toolbar.setTitle("Bar do Bugao");
+        //toolbar.setSubtitle("Adicionar Itens");
 
         listProdutos = (ListView) findViewById(R.id.listProdutos);
 
@@ -231,6 +234,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
                         // Show Alert
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setIcon(R.drawable.ic_logoapp_dois);
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayCerv.get(position).getDescricao() + ":");
                         // DECLARACAO DO EDITTEXT
@@ -266,6 +270,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setIcon(R.drawable.ic_logoapp_dois);
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayBeb.get(position).getDescricao() + ":");
                         // DECLARACAO DO EDITTEXT
@@ -301,6 +306,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setIcon(R.drawable.ic_logoapp_dois);
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayCaldos.get(position).getDescricao() + ":");
                         // DECLARACAO DO EDITTEXT
@@ -334,6 +340,7 @@ public class ProdutosComandaActivity extends AppCompatActivity {
                         final int codComanda = Integer.parseInt(ComandaFragment.codComanda);
 
                         final AlertDialog.Builder mensagem = new AlertDialog.Builder(getActivity());
+                        mensagem.setIcon(R.drawable.ic_logoapp_dois);
                         mensagem.setTitle("Bar do Bugão \ncomanda: " + codComanda);
                         mensagem.setMessage("Digite a Quantidade de " + arrayBebOut.get(position).getDescricao() + ":");
                         // DECLARACAO DO EDITTEXT

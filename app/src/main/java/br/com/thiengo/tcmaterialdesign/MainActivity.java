@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
         mToolbar = (Toolbar) findViewById(R.id.tb_main);
         mToolbar.setTitle("Bar do Bugao");
         mToolbar.setSubtitle("Comandas em aberto");
-        //mToolbar.setLogo(R.drawable.ic_launcher);
+        mToolbar.setLogo(R.drawable.ic_logoapp_dois);
         setSupportActionBar(mToolbar);
         //ipConexao = ipRede();
 
@@ -138,6 +138,7 @@ public class MainActivity extends ActionBarActivity {
                 List<Comanda> list = new ArrayList<>();
 
                 final AlertDialog.Builder mensagem = new AlertDialog.Builder(MainActivity.this);
+                mensagem.setIcon(R.drawable.ic_logoapp_dois);
                /*mensagem.setTitle("Bar do Bugão");
                 mensagem.setMessage("Erro ao conectar, digite o ip do servidor:");
                 final EditText input = new EditText(MainActivity.this);
@@ -147,6 +148,7 @@ public class MainActivity extends ActionBarActivity {
                 Context context = MainActivity.this;
                 LinearLayout layout = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.VERTICAL);
+
 
                 final EditText ipServer = new EditText(context);
                 ipServer.setHint("Ip servidor");
