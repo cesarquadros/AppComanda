@@ -11,7 +11,11 @@
 
     <application
         android:allowBackup="true"
+<<<<<<< HEAD
         android:icon="@drawable/ic_logoapp"
+=======
+        android:icon="@drawable/ic_launcher"
+>>>>>>> 8e0650254e71286c3b0fb7547e3af09997e7539f
         android:label="@string/app_name"
         android:theme="@style/Theme.MyTheme">
         <activity

@@ -28,7 +28,13 @@ public class ComandaDao extends Conexao {
             sql = "INSERT INTO COMANDA(NOME_CLIENTE, DATA_INICIO, STATUS) VALUES('"+comanda.getNome()+"','"+comanda.getData()+"','"+comanda.getStatus()+"')";
             stmt = con.createStatement();
             stmt.executeUpdate(sql);
+            con.close();
             return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,13 +53,19 @@ public class ComandaDao extends Conexao {
                 Comanda comanda = new Comanda(rs.getInt(1),rs.getString(2));
                 listComandas.add(comanda);
             }
+            con.close();
+            return listComandas;
 
         } catch (SQLException e) {
             e.printStackTrace();
+            try {
+                con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             return listComandas;
         }
 
-        return listComandas;
     }
 
     public boolean apagarComanda(String codComanda){
@@ -70,9 +82,14 @@ public class ComandaDao extends Conexao {
 
             sql = "DELETE FROM COMANDA WHERE COD_COMANDA = '"+codComanda+"'";
             stmt.executeUpdate(sql);
-
+            con.close();
             return true;
         } catch (SQLException e) {
+            try {
+                con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             e.printStackTrace();
             return false;
         }
@@ -98,7 +115,6 @@ public class ComandaDao extends Conexao {
                     " GROUP BY"+
                     " P.DESCRICAO, P.PRECO";
             rs = stmt.executeQuery(sql);
-
 
             int i =0;
             while(rs.next()){

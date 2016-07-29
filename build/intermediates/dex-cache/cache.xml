@@ -16,6 +16,13 @@
         <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\jtds-1.3.0-c6b8432d599fe7cdec7c6dfcf76518c63e0b4267.jar" />
     </item>
     <item
+        jar="C:\Users\cquadros\workspace\AppComanda\app\libs\jtds-1.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="15fd02c22684ed5ccb56ab6d413b14a1dc34a439">
+        <dex dex="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\pre-dexed\debug\jtds-1.3.0-c6b8432d599fe7cdec7c6dfcf76518c63e0b4267.jar" />
+    </item>
+    <item
         jar="C:\Users\cquadros\workspace\AppComanda\app\build\intermediates\exploded-aar\com.daimajia.androidanimations\library\1.1.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
