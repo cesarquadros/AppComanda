@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -27,10 +28,10 @@ import br.com.thiengo.tcmaterialdesign.adapters.ComandaAdapter;
 import br.com.thiengo.tcmaterialdesign.domain.Comanda;
 import br.com.thiengo.tcmaterialdesign.interfaces.RecyclerViewOnClickListenerHack;
 
-public class ComandaFragment extends Fragment implements RecyclerViewOnClickListenerHack,SwipeRefreshLayout.OnRefreshListener {
+public class ComandaFragment extends Fragment implements RecyclerViewOnClickListenerHack, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView mRecyclerView;
-    private List<Comanda> mList;
+    public static List<Comanda> mList;
     public static String codComanda;
     public static String nomeComanda;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -40,8 +41,6 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-
-
 
         View view = inflater.inflate(R.layout.fragment_car, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh);
@@ -65,15 +64,20 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
     }
 
     @Override
-    public void onRefresh(){
-        swipeRefreshLayout.setRefreshing(true);
-        Toast.makeText(getActivity(), "Comandas atualizadas", Toast.LENGTH_SHORT).show();
-        refreshList();
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                refreshList();
+            }
+        }, 3000);
     }
-   public void refreshList(){
+
+    public void refreshList() {
         //do processing to get new data and set your listview's adapter, maybe  reinitialise the loaders you may be using or so
         //when your data has finished loading, cset the refresh state of the view to false
-       atualizarComanda();
+        atualizarComanda();
         swipeRefreshLayout.setRefreshing(false);
 
     }
@@ -172,7 +176,7 @@ public class ComandaFragment extends Fragment implements RecyclerViewOnClickList
         }
     }
 
-    public void atualizarComanda(){
+    public void atualizarComanda() {
         ComandaFragment frag = (ComandaFragment) getFragmentManager().findFragmentByTag("mainFrag");
         frag = new ComandaFragment();
         FragmentTransaction ft = getFragmentManager().beginTransaction();

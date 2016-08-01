@@ -20,13 +20,24 @@
         android:id="@+id/rl_fragment_container"
         android:layout_below="@+id/tb_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/inc_tb_bottom">
+        android:layout_height="wrap_content">
+
     </RelativeLayout>
 
-    <include
-        android:id="@+id/inc_tb_bottom"
-        layout="@layout/toolbar_bottom"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/button_material_light"
+        android:longClickable="true"
+        android:id="@+id/btnAddComanda"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginEnd="5dp" />
 
 </RelativeLayout>
 

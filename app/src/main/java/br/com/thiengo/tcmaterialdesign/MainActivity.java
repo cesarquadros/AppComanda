@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.text.InputType;
 import android.text.format.Formatter;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -32,6 +35,9 @@ public class MainActivity extends ActionBarActivity {
     private static String TAG = "LOG";
     private Toolbar mToolbar;
     private Toolbar mToolbarBottom;
+
+    private FloatingActionButton btnAddComanda;
+
     public static String curDate;
     private ComandaDao comandaDao = new ComandaDao();
     public static String ipConexao = "";
@@ -69,9 +75,42 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
-
+        btnAddComanda = (FloatingActionButton) findViewById(R.id.btnAddComanda);
         mToolbarBottom = (Toolbar) findViewById(R.id.inc_tb_bottom);
-        mToolbarBottom.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+
+
+        btnAddComanda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder mensagem = new AlertDialog.Builder(MainActivity.this);
+                mensagem.setTitle("Bar do Bugão");
+                mensagem.setMessage(curDate + "\nDigite o nome:");
+                // DECLARACAO DO EDITTEXT
+                final EditText input = new EditText(MainActivity.this);
+                mensagem.setView(input);
+                mensagem.setNeutralButton("Abrir comanda", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Toast.makeText(getApplicationContext(), input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                        Comanda comanda = new Comanda();
+                        comanda.setNome(input.getText().toString());
+                        comanda.setStatus("ABERTO");
+                        comanda.setData(curDate);
+                        boolean abrirComanda = comandaDao.abrirComanda(comanda);
+                        if(abrirComanda){
+                            Toast.makeText(getApplicationContext(),"Comanda aberta para "+ input.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                            // FRAGMENT
+                            atualizarComanda();
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Erro ao abrir a comanda", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                mensagem.show();
+            }
+        });
+
+       /* btnAddComanda.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 final AlertDialog.Builder mensagem = new AlertDialog.Builder(MainActivity.this);
@@ -101,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
                 return true;
             }
         });
-        mToolbarBottom.inflateMenu(R.menu.menu_bottom);
+        mToolbarBottom.inflateMenu(R.menu.menu_bottom);*/
 
         // FRAGMENT
         ComandaFragment frag = (ComandaFragment) getSupportFragmentManager().findFragmentByTag("mainFrag");
