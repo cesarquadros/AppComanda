@@ -46,7 +46,7 @@ public class ComandaDao extends Conexao {
         try {
             con = abreConexao();
             stmt = con.createStatement();
-            sql = "SELECT COD_COMANDA, NOME_CLIENTE FROM COMANDA WHERE STATUS = 'ABERTO'";
+            sql = "SELECT COD_COMANDA, NOME_CLIENTE FROM COMANDA WHERE STATUS = 'ABERTO' ORDER BY NOME_CLIENTE";
             rs = stmt.executeQuery(sql);
 
             while(rs.next()){
