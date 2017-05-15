@@ -32,12 +32,12 @@
         app:backgroundTint="@color/button_material_light"
         android:longClickable="true"
         android:id="@+id/btnAddComanda"
-        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginEnd="5dp" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
 
